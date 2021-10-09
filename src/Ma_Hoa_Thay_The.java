@@ -64,10 +64,26 @@ public class Ma_Hoa_Thay_The {
         return result.toString();
     }
 
+    public static String xoaDauAndUppercase(String text) {
+        text = text.toUpperCase();
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("A", "[ÀÁẢÃẠÂẤẦẨẪẬĂẮẰẲẴẶ]");
+        map.put("E", "[ÉÈẺẼẸÊẾỀỂỄỆ]");
+        map.put("O", "[ÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢ]");
+        map.put("U", "[ÚÙỦŨỤƯỨỪỬỮỰ]");
+        map.put("I", "[ÍÌỈĨỊ]");
+        map.put("Y", "[ÝỲỶỸỴ]");
+        map.put("D", "Đ");
+        for (String key : map.keySet()) {
+            text = text.replaceAll(map.get(key), key);
+        }
+        return text;
+    }
+
     public static void main(String args[]) {
         Map<Character, Character> keyPair = keyPairRandomGenerator();
         String input = "đây_là_email_nông_lâm@gmail.com";
-        input = Thong_Ke_Percent.xoaDauAndUppercase(input);
+        input = xoaDauAndUppercase(input);
         System.out.println("Random key: " + printKey(keyPair));
         System.out.println("*******************************************************************************************************");
         String output = replaceEncrypt(input, keyPair);

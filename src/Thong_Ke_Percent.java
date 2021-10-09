@@ -17,7 +17,7 @@ public class Thong_Ke_Percent {
         return alphabet;
     }
 
-    public static String[] initDsPhuAmKep() {
+    public static String[] initBo2KyTu() {
         String[] alphabet = new String[TOTAL_LETTERS_ALPHABET * TOTAL_LETTERS_ALPHABET];
         int index = 0;
         for (int i = ASCII_CODE_OF_A; i < ASCII_CODE_OF_A + TOTAL_LETTERS_ALPHABET; i++) {
@@ -81,27 +81,13 @@ public class Thong_Ke_Percent {
         return str.toString();
     }
 
-    public static String xoaDauAndUppercase(String text) {
-        text = text.toUpperCase();
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put("A", "[ÀÁẢÃẠÂẤẦẨẪẬĂẮẰẲẴẶ]");
-        map.put("E", "[ÉÈẺẼẸÊẾỀỂỄỆ]");
-        map.put("O", "[ÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢ]");
-        map.put("U", "[ÚÙỦŨỤƯỨỪỬỮỰ]");
-        map.put("I", "[ÍÌỈĨỊ]");
-        map.put("Y", "[ÝỲỶỸỴ]");
-        map.put("D", "Đ");
-        for (String key : map.keySet()) {
-            text = text.replaceAll(map.get(key), key);
-        }
-        return text;
-    }
+
 
     public static void main(String[] args) {
         String input = "đây_là_email_nông_lâm@gmail.com";
 
         System.out.println(printMap(thongKeTanSoTheoKyTu(input, initAlphabet()), 30));
-        System.out.println(printMap(thongKeTanSoTheoKyTu(input, initDsPhuAmKep()), 10));
+        System.out.println(printMap(thongKeTanSoTheoKyTu(input, initBo2KyTu()), 10));
         System.out.println(printMap(thongKeTanSoTheoKyTu(input, initDsVan3KyTu()),10));
 
 
